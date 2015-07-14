@@ -25,7 +25,7 @@
 //按钮头部的空格间距
 #define BUTTON_INTERVAL_HEIGHT                  6
 //按钮
-#define BUTTON_HEIGHT                           40
+#define BUTTON_HEIGHT                           45
 #define BUTTON_INTERVAL_WIDTH                   0
 #define BUTTON_WIDTH                            [UIScreen mainScreen].bounds.size.width
 //按钮字体样式和大小
@@ -42,7 +42,7 @@
 #define TITLE_HEIGHT                            35
 #define TITLE_INTERVAL_WIDTH                    0
 #define TITLE_WIDTH                             [UIScreen mainScreen].bounds.size.width
-#define TITLE_FONT                              [UIFont systemFontOfSize:16]
+#define TITLE_FONT                              [UIFont systemFontOfSize:14]
 #define SHADOW_OFFSET                           CGSizeMake(0, 0.0f)
 #define TITLE_NUMBER_LINES                      2
 
@@ -230,8 +230,8 @@
     UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(TITLE_INTERVAL_WIDTH, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
     titlelabel.backgroundColor = [UIColor whiteColor];
     titlelabel.textAlignment = NSTextAlignmentCenter;
-    titlelabel.shadowColor = [UIColor blackColor];
-    titlelabel.shadowOffset = SHADOW_OFFSET;
+    //titlelabel.shadowColor = [UIColor blackColor];
+    //titlelabel.shadowOffset = SHADOW_OFFSET;
     titlelabel.font = TITLE_FONT;
     titlelabel.text = title;
     titlelabel.textColor = [UIColor blackColor];
@@ -241,7 +241,7 @@
 - (UIButton *)creatDestructiveButtonWith:(NSString *)destructiveButtonTitle
 {
     UIButton *destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, 0, BUTTON_WIDTH, BUTTON_HEIGHT)];
-    [destructiveButton setBackgroundImage:[UIImage imageWithColor:[UIColor  lightGrayColor]] forState:UIControlStateNormal];
+    [destructiveButton setBackgroundImage:[UIImage imageWithColor:[UIColor  whiteColor]] forState:UIControlStateNormal];
     [destructiveButton setTitle:destructiveButtonTitle forState:UIControlStateNormal];
     destructiveButton.titleLabel.font = BUTTONTITLE_FONT;
     [destructiveButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -251,13 +251,6 @@
 
 - (UIButton *)creatOtherButtonWith:(NSString *)otherButtonTitle withPostion:(NSInteger )postionIndex
 {
-    int button_interval_height;
-    //if (postionIndex==0) {
-      //  button_interval_height = 0;
-    //}else
-    //{
-        button_interval_height = BUTTON_INTERVAL_HEIGHT;
-    //}
     UIButton *otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, 0+ (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
     [otherButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     [otherButton setTitle:otherButtonTitle forState:UIControlStateNormal];
@@ -274,11 +267,10 @@
     [cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
     cancelButton.titleLabel.font = BUTTONTITLE_FONT;
     [cancelButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     return cancelButton;
 }
-
 - (void)clickOnButtonWith:(UIButton *)button
 {
     //红色警戒按钮

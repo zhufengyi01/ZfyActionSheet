@@ -29,7 +29,7 @@
 -(void)btnClick
 {
     
-    ZfyActionSheet *zfy =[[ZfyActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"还是删掉" destructiveButtonTitle:nil otherButtonTitles:@[@"不删除",@"等下再说",@"哈哈",@"哈哈"]];
+    ZfyActionSheet *zfy =[[ZfyActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"还是删掉" destructiveButtonTitle:@"不敢删" otherButtonTitles:@[@"不删除",@"等下再说",@"哈哈",@"哈哈"]];
     zfy.tag=100;
     [zfy showInView:self.view];
 }
