@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AA7FD330-3912-4152-B9A6-7FECCBD6C113</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZfyActionSheet</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2FF6ADE4187ED97709EC6269322AC53505577DA4</key>
+		<string>https://github.com/zhufengyi01/CustomTabbarController.git</string>
+		<key>E9E288EA7C6BF244E7CB45736E8CDC83C78E36BF</key>
+		<string>https://github.com/zhufengyi01/ZfyActionSheet.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZfyActionSheet.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2FF6ADE4187ED97709EC6269322AC53505577DA4</key>
+		<string>../../..</string>
+		<key>E9E288EA7C6BF244E7CB45736E8CDC83C78E36BF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zhufengyi01/ZfyActionSheet.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E9E288EA7C6BF244E7CB45736E8CDC83C78E36BF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2FF6ADE4187ED97709EC6269322AC53505577DA4</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E9E288EA7C6BF244E7CB45736E8CDC83C78E36BF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZfyActionSheet</string>
+		</dict>
+	</array>
+</dict>
+</plist>

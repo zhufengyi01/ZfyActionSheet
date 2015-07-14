@@ -7,28 +7,29 @@
 //
 
 #import "ZfyActionSheet.h"
+#import "UIImage+Color.h"
 //取消按钮的背景
-#define CANCEL_BUTTON_COLOR                     [UIColor colorWithRed:53/255.00f green:53/255.00f blue:53/255.00f alpha:1]
+#define CANCEL_BUTTON_COLOR                     [UIColor colorWithRed:220.0/255.00f green:220.0/255.00f blue:220.0/255.00f alpha:1]
 //警告背景颜色
 #define DESTRUCTIVE_BUTTON_COLOR                [UIColor colorWithRed:185/255.00f green:45/255.00f blue:39/255.00f alpha:1]
 //button的背景颜色
-#define OTHER_BUTTON_COLOR                      [UIColor whiteColor]
+#define OTHER_BUTTON_COLOR                      [UIColor redColor]
 //弹出窗口的颜色
-#define ACTIONSHEET_BACKGROUNDCOLOR            [UIColor whiteColor] //[UIColor colorWithRed:106/255.00f green:106/255.00f blue:106/255.00f alpha:1]
+#define ACTIONSHEET_BACKGROUNDCOLOR            [UIColor colorWithRed:220.0/255.00f green:220.0/255.00f blue:220.0/255.00f alpha:1]
 //整个窗口的颜色
-#define WINDOW_COLOR                            [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
+#define WINDOW_COLOR                            [UIColor colorWithRed:0.0/255 green:0.0/255 blue:0.0/255 alpha:0.2]
 
 #pragma  mark  按钮有关
 //按钮的圆角幅度
-#define CORNER_RADIUS                           5
-
-#define BUTTON_INTERVAL_HEIGHT                  20
+#define CORNER_RADIUS                           0
+//按钮头部的空格间距
+#define BUTTON_INTERVAL_HEIGHT                  6
 //按钮
 #define BUTTON_HEIGHT                           40
-#define BUTTON_INTERVAL_WIDTH                   30
-#define BUTTON_WIDTH                            260
+#define BUTTON_INTERVAL_WIDTH                   0
+#define BUTTON_WIDTH                            [UIScreen mainScreen].bounds.size.width
 //按钮字体样式和大小
-#define BUTTONTITLE_FONT                        [UIFont fontWithName:@"HelveticaNeue-Bold" size:18]
+#define BUTTONTITLE_FONT                       [UIFont systemFontOfSize:16]
 //按钮的变宽宽度
 #define BUTTON_BORDER_WIDTH                     0.5f
 //按钮边框颜色
@@ -37,11 +38,11 @@
 
 
 #pragma mark  title  有关
-#define TITLE_INTERVAL_HEIGHT                   15
+#define TITLE_INTERVAL_HEIGHT                   0
 #define TITLE_HEIGHT                            35
-#define TITLE_INTERVAL_WIDTH                    30
-#define TITLE_WIDTH                             260
-#define TITLE_FONT                              [UIFont fontWithName:@"Helvetica-Bold" size:14]
+#define TITLE_INTERVAL_WIDTH                    0
+#define TITLE_WIDTH                             [UIScreen mainScreen].bounds.size.width
+#define TITLE_FONT                              [UIFont systemFontOfSize:16]
 #define SHADOW_OFFSET                           CGSizeMake(0, 0.0f)
 #define TITLE_NUMBER_LINES                      2
 
@@ -120,7 +121,6 @@
     
     if (destructiveButtonTitle) {
         self.isHadDestructionButton = YES;
-        
         UIButton *destructiveButton = [self creatDestructiveButtonWith:destructiveButtonTitle];
         destructiveButton.tag = self.postionIndexNumber;
         [destructiveButton addTarget:self action:@selector(clickOnButtonWith:) forControlEvents:UIControlEventTouchUpInside];
@@ -139,10 +139,10 @@
         else{
             //当无title时
             if (otherButtonTitlesArray && otherButtonTitlesArray.count > 0) {
-                self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + destructiveButton.frame.size.height+(BUTTON_INTERVAL_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2));
+                self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + destructiveButton.frame.size.height+(BUTTON_INTERVAL_HEIGHT/2);
             }
             else{
-                self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + destructiveButton.frame.size.height+(2*BUTTON_INTERVAL_HEIGHT);
+                self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + destructiveButton.frame.size.height+(BUTTON_INTERVAL_HEIGHT/2);
             }
         }
         [self.backGroundView addSubview:destructiveButton];
@@ -166,11 +166,9 @@
                         self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + otherButton.frame.size.height+(BUTTON_INTERVAL_HEIGHT/2);
                     }
                     else{
-                        self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + otherButton.frame.size.height+(2*BUTTON_INTERVAL_HEIGHT);
+                        self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + otherButton.frame.size.height+(BUTTON_INTERVAL_HEIGHT/2);
                     }
-                    
                     [self.backGroundView addSubview:otherButton];
-                    
                     self.postionIndexNumber++;
                 }
             }
@@ -211,7 +209,6 @@
         if (self.isHadTitle == NO && self.isHadDestructionButton == NO && self.isHadOtherButton == NO) {
             self.ZfyActionSheetHeight = self.ZfyActionSheetHeight + cancelButton.frame.size.height+(2*BUTTON_INTERVAL_HEIGHT);
         }
-        
         //当有title或destructionButton或otherbuttons时
         if (self.isHadTitle == YES || self.isHadDestructionButton == YES || self.isHadOtherButton == YES) {
             [cancelButton setFrame:CGRectMake(cancelButton.frame.origin.x, self.ZfyActionSheetHeight, cancelButton.frame.size.width, cancelButton.frame.size.height)];
@@ -219,10 +216,9 @@
         }
         
         [self.backGroundView addSubview:cancelButton];
-        
         self.postionIndexNumber++;
     }
-    
+    self.ZfyActionSheetHeight = self.ZfyActionSheetHeight -BUTTON_INTERVAL_HEIGHT;
     [UIView animateWithDuration:ANIMATE_DURATION animations:^{
         [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-self.ZfyActionSheetHeight, [UIScreen mainScreen].bounds.size.width, self.ZfyActionSheetHeight)];
     } completion:^(BOOL finished) {
@@ -232,7 +228,7 @@
 - (UILabel *)creatTitleLabelWith:(NSString *)title
 {
     UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(TITLE_INTERVAL_WIDTH, TITLE_INTERVAL_HEIGHT, TITLE_WIDTH, TITLE_HEIGHT)];
-    titlelabel.backgroundColor = [UIColor clearColor];
+    titlelabel.backgroundColor = [UIColor whiteColor];
     titlelabel.textAlignment = NSTextAlignmentCenter;
     titlelabel.shadowColor = [UIColor blackColor];
     titlelabel.shadowOffset = SHADOW_OFFSET;
@@ -242,35 +238,28 @@
     titlelabel.numberOfLines = TITLE_NUMBER_LINES;
     return titlelabel;
 }
-
 - (UIButton *)creatDestructiveButtonWith:(NSString *)destructiveButtonTitle
 {
-    UIButton *destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
-    destructiveButton.layer.masksToBounds = YES;
-    destructiveButton.layer.cornerRadius = CORNER_RADIUS;
-    
-    destructiveButton.layer.borderWidth = BUTTON_BORDER_WIDTH;
-    destructiveButton.layer.borderColor = BUTTON_BORDER_COLOR;
-    
-    destructiveButton.backgroundColor = DESTRUCTIVE_BUTTON_COLOR;
+    UIButton *destructiveButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, 0, BUTTON_WIDTH, BUTTON_HEIGHT)];
+    [destructiveButton setBackgroundImage:[UIImage imageWithColor:[UIColor  lightGrayColor]] forState:UIControlStateNormal];
     [destructiveButton setTitle:destructiveButtonTitle forState:UIControlStateNormal];
     destructiveButton.titleLabel.font = BUTTONTITLE_FONT;
-    
-    [destructiveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [destructiveButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [destructiveButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [destructiveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     return destructiveButton;
 }
 
 - (UIButton *)creatOtherButtonWith:(NSString *)otherButtonTitle withPostion:(NSInteger )postionIndex
 {
-    UIButton *otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT + (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
-    otherButton.layer.masksToBounds = YES;
-    otherButton.layer.cornerRadius = CORNER_RADIUS;
-    
-    otherButton.layer.borderWidth = BUTTON_BORDER_WIDTH;
-    otherButton.layer.borderColor = BUTTON_BORDER_COLOR;
-    [otherButton setBackgroundImage:[UIImage imageNamed:@"writeImage"] forState:UIControlStateNormal];
-    otherButton.backgroundColor = OTHER_BUTTON_COLOR;
+    int button_interval_height;
+    //if (postionIndex==0) {
+      //  button_interval_height = 0;
+    //}else
+    //{
+        button_interval_height = BUTTON_INTERVAL_HEIGHT;
+    //}
+    UIButton *otherButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, 0+ (postionIndex*(BUTTON_HEIGHT+(BUTTON_INTERVAL_HEIGHT/2))), BUTTON_WIDTH, BUTTON_HEIGHT)];
+    [otherButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     [otherButton setTitle:otherButtonTitle forState:UIControlStateNormal];
     otherButton.titleLabel.font = BUTTONTITLE_FONT;
     [otherButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -281,16 +270,11 @@
 - (UIButton *)creatCancelButtonWith:(NSString *)cancelButtonTitle
 {
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(BUTTON_INTERVAL_WIDTH, BUTTON_INTERVAL_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)];
-    cancelButton.layer.masksToBounds = YES;
-    cancelButton.layer.cornerRadius = CORNER_RADIUS;
-    
-    cancelButton.layer.borderWidth = BUTTON_BORDER_WIDTH;
-    cancelButton.layer.borderColor = BUTTON_BORDER_COLOR;
-    
     cancelButton.backgroundColor = CANCEL_BUTTON_COLOR;
     [cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
     cancelButton.titleLabel.font = BUTTONTITLE_FONT;
-    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     return cancelButton;
 }

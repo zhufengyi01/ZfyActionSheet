@@ -16,6 +16,7 @@
 		008363421AE5185700806897 /* ZfyActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 008363411AE5185700806897 /* ZfyActionSheetTests.m */; };
 		0083634C1AE5187100806897 /* writeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0083634B1AE5187100806897 /* writeImage.png */; };
 		0083634F1AE518A400806897 /* ZfyActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083634E1AE518A400806897 /* ZfyActionSheet.m */; };
+		38CFC3CA1B54EE0F004EF31F /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CFC3C91B54EE0F004EF31F /* UIImage+Color.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		0083634B1AE5187100806897 /* writeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeImage.png; sourceTree = "<group>"; };
 		0083634D1AE518A400806897 /* ZfyActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZfyActionSheet.h; sourceTree = "<group>"; };
 		0083634E1AE518A400806897 /* ZfyActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZfyActionSheet.m; sourceTree = "<group>"; };
+		38CFC3C81B54EE0F004EF31F /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		38CFC3C91B54EE0F004EF31F /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		008363191AE5185600806897 = {
 			isa = PBXGroup;
 			children = (
+				38CFC3C81B54EE0F004EF31F /* UIImage+Color.h */,
+				38CFC3C91B54EE0F004EF31F /* UIImage+Color.m */,
 				0083634B1AE5187100806897 /* writeImage.png */,
 				008363241AE5185600806897 /* ZfyActionSheet */,
 				0083633E1AE5185700806897 /* ZfyActionSheetTests */,
@@ -230,6 +235,7 @@
 			files = (
 				0083632E1AE5185600806897 /* ViewController.m in Sources */,
 				0083632B1AE5185600806897 /* AppDelegate.m in Sources */,
+				38CFC3CA1B54EE0F004EF31F /* UIImage+Color.m in Sources */,
 				008363281AE5185600806897 /* main.m in Sources */,
 				0083634F1AE518A400806897 /* ZfyActionSheet.m in Sources */,
 			);
@@ -428,6 +434,7 @@
 				008363471AE5185700806897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		008363481AE5185700806897 /* Build configuration list for PBXNativeTarget "ZfyActionSheetTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +443,7 @@
 				0083634A1AE5185700806897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

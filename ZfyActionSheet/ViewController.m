@@ -29,11 +29,10 @@
 -(void)btnClick
 {
     
-    ZfyActionSheet *zfy =[[ZfyActionSheet alloc]initWithTitle:@"确定删除" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删了" otherButtonTitles:@[@"不删除",@"等下再说"]];
+    ZfyActionSheet *zfy =[[ZfyActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"还是删掉" destructiveButtonTitle:nil otherButtonTitles:@[@"不删除",@"等下再说",@"哈哈",@"哈哈"]];
     zfy.tag=100;
     [zfy showInView:self.view];
 }
-
 -(void)ZfyActionSheet:(ZfyActionSheet *)actionSheet ClickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"actionSheet =====%ld  buttonIndex =====%ld",actionSheet.tag,buttonIndex);
